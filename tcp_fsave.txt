@@ -3,3 +3,6 @@ helloooo
 exit
 xin chao
 exit
+Xin Chao
+Tam biet!
+exit

@@ -45,16 +45,13 @@ int main(int argc, char *argv[])
 
     int client = accept(listener, (struct sockaddr *)&clientAddr, &clientAddrLen);
     printf("Client IP: %s:%d\n", inet_ntoa(clientAddr.sin_addr), ntohs(clientAddr.sin_port));
-    char buf[12];
+    char buf[128];
 
+    // mo file de gui xau chao
     FILE *f = fopen(argv[3], "r");
-    while (!feof(f))
+    while (fgets(buf, 128, f) != NULL)
     {
-        int ret = fread(buf, sizeof(char), 1, f);
-
-        if (ret <= 0)
-            break;
-        send(client, buf, ret, 0);
+        send(client, buf, strlen(buf), 0);
     }
     fclose(f);
     f = fopen(argv[4], "a");

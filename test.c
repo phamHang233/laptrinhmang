@@ -3,24 +3,13 @@
 
 int main()
 {
-    char buffer[50];
-    char *s = "geeksforgeeks";
-
-    // Counting the character and storing
-    // in buffer using snprintf
-    printf("Writing %s onto buffer"
-           " with capacity 6",
-           s);
-    int j = snprintf(buffer, 6, "%s\n", s);
-
-    // Print the string stored in buffer and
-    // character count
-    printf("\nString written on "
-           "buffer = %s",
-           buffer);
-    printf("\nValue returned by "
-           "snprintf() method = %d\n",
-           j);
-
-    return 0;
+       FILE *f = fopen("tcp_hello.txt", "r");
+       char buf[128];
+       int r;
+       while (r = fgets(buf, 128, f) != NULL)
+       {
+              // Xuất từng dòng ra màn hình
+              printf("%ld", strlen(buf));
+       }
+       return 0;
 }
